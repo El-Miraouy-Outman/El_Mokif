@@ -19,7 +19,7 @@ public class MaalmServiceImpl implements MaalmService {
     @Override
     public Maalm findByEmailAndPASS(String email, String code) throws Exception {
         Maalm maalm=maalmRepository.findByEmailAndPassword(email,code);
-        if(maalm==null) throw new Exception("Maalm not found");
+        if(maalm==null) return null;
         return maalm;
     }
 

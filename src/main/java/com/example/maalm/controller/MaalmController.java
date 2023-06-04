@@ -20,18 +20,17 @@ public class MaalmController  {
     public Maalm getMaalmByCni(@PathVariable String cin) throws Exception {
         return service.getMaalmByCni(cin);
     }
-   @GetMapping("/{email}/{code}")
+   @GetMapping("/email/{email}/code/{code}")
     public  Maalm findByEmailAndCode(@PathVariable String email,@PathVariable String code) throws Exception {
         return service.findByEmailAndPASS(email, code);
     }
-
     @PostMapping
     public Maalm saveMaalm(@RequestBody Maalm maalm) {
         return service.saveMaalm(maalm);
     }
 
     @PutMapping
-    public Maalm updateMaalm(Maalm maalm) throws Exception {
+    public Maalm updateMaalm(@RequestBody Maalm maalm) throws Exception {
         return service.updateMaalm(maalm);
     }
 

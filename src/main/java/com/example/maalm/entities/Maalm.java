@@ -29,7 +29,6 @@ public class Maalm {
     private int reviewTotal;
     private boolean role;
     @OneToMany(mappedBy = "maalm")
-    @ToString.Exclude
     @JsonIgnore
     private List<Review> reviewList;
     @OneToMany(mappedBy ="maalm")

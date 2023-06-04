@@ -1,15 +1,18 @@
 package com.example.maalm.service;
 
+import com.example.maalm.Dto.PublicationDto;
 import com.example.maalm.entities.Etat;
 import com.example.maalm.entities.Maalm;
 import com.example.maalm.entities.Publication;
 import com.example.maalm.repository.PublicationRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -22,10 +25,7 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public List<Publication> findByMaalm(Long idMamm) throws Exception {
         Maalm maalm=maalmService.findById(idMamm);
-        List<Publication> listePub=new ArrayList<>();
-
-        listePub.forEach(us-> System.out.println(us.getDescription()));
-         listePub=publicationRepository.findByMaalm(maalm);
+        List<Publication> listePub=publicationRepository.findByMaalm(maalm);
 
         return listePub;
     }
@@ -37,10 +37,17 @@ public class PublicationServiceImpl implements PublicationService {
     }
 
     @Override
-    public List<Publication> accepterPublication() {
+    public List<PublicationDto> accepterPublication() {
         List<Publication> liste=publicationRepository.findByEtat(Etat.ACCEPTE);
-        liste.forEach(us-> System.out.println(us.getEtat()));
-        return  liste;
+        List<PublicationDto> listeDto=liste.stream()
+                .map(publication ->{
+                    PublicationDto pub=PublicationDto.builder()
+                            .build();
+                    BeanUtils.copyProperties(publication,pub);
+                    return pub;
+                })
+                .collect(Collectors.toList());
+        return  listeDto;
     }
 
     @Override

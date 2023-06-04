@@ -1,5 +1,6 @@
 package com.example.maalm.service;
 
+import com.example.maalm.Dto.PublicationDto;
 import com.example.maalm.entities.Publication;
 import org.springframework.data.jpa.repository.Query;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 public interface PublicationService {
     public List<Publication> publicationAll() ;
-    public  List<Publication> accepterPublication();
+    public  List<PublicationDto> accepterPublication();
     public Publication findById(Long IDPUB);
     public List<Publication> findByMaalm(Long idMamm) throws Exception;
 

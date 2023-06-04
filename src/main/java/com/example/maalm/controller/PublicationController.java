@@ -1,11 +1,10 @@
 package com.example.maalm.controller;
 
+import com.example.maalm.Dto.PublicationDto;
 import com.example.maalm.entities.Publication;
 import com.example.maalm.service.PublicationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
@@ -30,7 +29,7 @@ public class PublicationController {
         return publicationService.acceptePublication(idPub);
     }
     @GetMapping("/accepter")
-    public  List<Publication> accepterPublication(){
+    public  List<PublicationDto> publicationAccepter(){
         return publicationService.accepterPublication();
     }
     @DeleteMapping("/{IDPUB}")

@@ -1,5 +1,6 @@
 package com.example.maalm.controller;
 
+import com.example.maalm.Dto.ReviewDto;
 import com.example.maalm.entities.Review;
 import com.example.maalm.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 public class RevieController {
     private final ReviewService reviewService;
     @GetMapping("/{id}")
-    public List<Review> findReviewByMaalm(@PathVariable Long id) throws Exception {
+    public List<ReviewDto> findReviewByMaalm(@PathVariable Long id) throws Exception {
         return reviewService.findReviewByMaalm(id);
     }
 

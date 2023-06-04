@@ -20,7 +20,6 @@ public class Review {
     private Long idReviewrs;
     private int review;
     @ManyToOne
-    @JsonIgnore
     private Maalm maalm;
     private Long idClient;
 
