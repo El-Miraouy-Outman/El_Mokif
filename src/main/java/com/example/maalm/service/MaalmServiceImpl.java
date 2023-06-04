@@ -37,6 +37,7 @@ public class MaalmServiceImpl implements MaalmService {
 
     @Override
     public Maalm updateMaalm(Maalm maalm) throws Exception {
+        System.out.println(maalm.getCin());
         Maalm maalm1 = getMaalmByCni(maalm.getCin());
         BeanUtils.copyProperties(maalm1,maalm);
         if ((maalm1==null))throw new  Exception("maalm not fund");

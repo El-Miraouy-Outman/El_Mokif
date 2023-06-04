@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/services")
+@CrossOrigin(origins = "*")
 public class ServiceController  {
     private  final ServiceService serviceService;
     @GetMapping("/{id}")

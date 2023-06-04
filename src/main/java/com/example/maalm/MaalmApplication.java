@@ -11,7 +11,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
@@ -21,8 +24,23 @@ public class MaalmApplication {
     public static void main(String[] args) {
         SpringApplication.run(MaalmApplication.class, args);
     }
-/*
 
+
+    @Configuration
+    public class CorsConfiguration implements WebMvcConfigurer {
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOriginPatterns("http://localhost:61444") // Replace with your Flutter application's origin
+                    .allowedMethods("GET", "POST", "PUT", "DELETE")
+                    .allowedHeaders("*")
+                    .allowCredentials(false);
+        }
+
+    }
+
+/*
     @Component
 
     public class DataLoader implements CommandLineRunner {
@@ -207,7 +225,8 @@ public class MaalmApplication {
 
         };
     }
-*/
+
+ */
 
     }
 
