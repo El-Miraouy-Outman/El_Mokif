@@ -32,7 +32,7 @@ public class MaalmApplication {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**")
-                    .allowedOriginPatterns("http://localhost:61444") // Replace with your Flutter application's origin
+                    .allowedOriginPatterns("http://localhost:53212") // Replace with your Flutter application's origin
                     .allowedMethods("GET", "POST", "PUT", "DELETE")
                     .allowedHeaders("*")
                     .allowCredentials(false);

@@ -4,6 +4,8 @@ import com.example.maalm.entities.Service;
 import com.example.maalm.repository.ServiceRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @org.springframework.stereotype.Service
 @RequiredArgsConstructor
 
@@ -23,5 +25,10 @@ public class ServiceServiceImp implements ServiceService{
     @Override
     public Service insert(Service service) {
         return serviceRepository.save(service);
+    }
+
+    @Override
+    public List<Service> getAllServices() {
+        return serviceRepository.findAll();
     }
 }

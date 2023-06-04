@@ -24,6 +24,7 @@ public class MaalmController  {
     public  Maalm findByEmailAndCode(@PathVariable String email,@PathVariable String code) throws Exception {
         return service.findByEmailAndPASS(email, code);
     }
+
     @PostMapping
     public Maalm saveMaalm(@RequestBody Maalm maalm) {
         return service.saveMaalm(maalm);
@@ -31,6 +32,7 @@ public class MaalmController  {
 
     @PutMapping
     public Maalm updateMaalm(@RequestBody Maalm maalm) throws Exception {
+        System.out.println(maalm);
         return service.updateMaalm(maalm);
     }
 

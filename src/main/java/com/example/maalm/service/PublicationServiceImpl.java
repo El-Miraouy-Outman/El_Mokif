@@ -77,7 +77,7 @@ public class PublicationServiceImpl implements PublicationService {
         publication.setDatecreation(new Date());
         publication.setService(service);
         publication.setMaalm(maalm);
-        publication.setEtat(Etat.REJETE);
+        publication.setEtat(Etat.ATTENTE);
         return publicationRepository.save(publication);
     }
 }

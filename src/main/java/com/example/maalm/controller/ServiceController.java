@@ -5,6 +5,8 @@ import com.example.maalm.service.ServiceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/services")
@@ -14,6 +16,10 @@ public class ServiceController  {
     @GetMapping("/{id}")
     public Service getService(@PathVariable Long id) {
         return serviceService.getService(id);
+    }
+    @GetMapping
+    public List<Service> getALLServices(){
+        return  serviceService.getAllServices();
     }
 
     @GetMapping("/name/{name}")

@@ -37,7 +37,7 @@ public class PublicationController {
         return publicationService.deleteById(IDPUB);
     }
 
-    @PostMapping("/service/{idPublicateur}/publicateur/{serviceName}")
+    @PostMapping("/publicateur/{idPublicateur}/service/{serviceName}")
     public Publication insert(@RequestBody Publication publication,@PathVariable Long idPublicateur,@PathVariable String serviceName) throws Exception {
         return publicationService.insert(publication,idPublicateur,serviceName);
     }
