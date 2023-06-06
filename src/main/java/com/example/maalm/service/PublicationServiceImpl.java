@@ -1,6 +1,8 @@
 package com.example.maalm.service;
 
+import com.example.maalm.Dto.MaalmDto;
 import com.example.maalm.Dto.PublicationDto;
+import com.example.maalm.Dto.ServiceDto;
 import com.example.maalm.entities.Etat;
 import com.example.maalm.entities.Maalm;
 import com.example.maalm.entities.Publication;
@@ -41,14 +43,41 @@ public class PublicationServiceImpl implements PublicationService {
         List<Publication> liste=publicationRepository.findByEtat(Etat.ACCEPTE);
         List<PublicationDto> listeDto=liste.stream()
                 .map(publication ->{
-                    PublicationDto pub=PublicationDto.builder()
-                            .build();
+                    PublicationDto pub=PublicationDto.builder().build();
+                    Maalm maalm=publication.getMaalm();
+                    MaalmDto maalmDto=MaalmDto.builder().build();
+                    BeanUtils.copyProperties(maalm,maalmDto);
+                    ServiceDto serviceDto=ServiceDto.builder().build();
+                    com.example.maalm.entities.Service service=publication.getService();
+                    BeanUtils.copyProperties(service,serviceDto);
                     BeanUtils.copyProperties(publication,pub);
+                    pub.setMaalm(maalmDto);
+                    pub.setService(serviceDto);
                     return pub;
                 })
                 .collect(Collectors.toList());
         return  listeDto;
     }
+
+    @Override
+    public List<PublicationDto> refuserPublication() {
+        List<Publication> liste=publicationRepository.findByEtat(Etat.ATTENTE);
+        List<PublicationDto> listeDto=liste.stream()
+                .map(publication ->{
+                    PublicationDto pub=PublicationDto.builder().build();
+                    Maalm maalm=publication.getMaalm();
+                    MaalmDto maalmDto=MaalmDto.builder().build();
+                    BeanUtils.copyProperties(maalm,maalmDto);
+                    ServiceDto serviceDto=ServiceDto.builder().build();
+                    com.example.maalm.entities.Service service=publication.getService();
+                    BeanUtils.copyProperties(service,serviceDto);
+                    BeanUtils.copyProperties(publication,pub);
+                    pub.setMaalm(maalmDto);
+                    pub.setService(serviceDto);
+                    return pub;
+                })
+                .collect(Collectors.toList());
+        return  listeDto;    }
 
     @Override
     public Publication findById(Long IDPUB) {

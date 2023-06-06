@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/publications")
 public class PublicationController {
     private final  PublicationService publicationService;
@@ -16,21 +15,27 @@ public class PublicationController {
     public List<Publication> findByMaalm(@PathVariable Long idMaalm) throws Exception {
         return publicationService.findByMaalm(idMaalm);
     }
+
     @GetMapping
     public List<Publication> publicationAll() {
         return publicationService.publicationAll();
     }
+
     @GetMapping("/{IDPUB}")
     public Publication findById(@PathVariable Long IDPUB) {
         return publicationService.findById(IDPUB);
     }
-    @GetMapping("/accepter/{idPub}")
+
+    @PutMapping("/accepter/{idPub}")
     public Publication accepterPublication(@PathVariable Long idPub){
         return publicationService.acceptePublication(idPub);
     }
     @GetMapping("/accepter")
     public  List<PublicationDto> publicationAccepter(){
         return publicationService.accepterPublication();
+    }   @GetMapping("/refuser")
+    public  List<PublicationDto> publicationRefudser(){
+        return publicationService.refuserPublication();
     }
     @DeleteMapping("/{IDPUB}")
     public boolean deleteById(@PathVariable Long IDPUB) {

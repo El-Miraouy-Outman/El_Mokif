@@ -45,4 +45,17 @@ public class ReviewServiceImpl implements ReviewService{
         review.setMaalm(maalm);
         return reviewRepository.save(review);
     }
+
+    @Override
+    public Review updateReview(Review review) throws Exception {
+        review = reviewRepository.save(review);
+        if (review == null) throw new Exception("review not fund");
+        review.setReview(review.getReview());
+        return reviewRepository.save(review);
+    }
+
+    @Override
+    public List<Review> getAllReview() {
+        return reviewRepository.findAll();
+    }
 }

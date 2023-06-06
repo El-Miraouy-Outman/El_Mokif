@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/maalms")
-@CrossOrigin(origins = "*")
 public class MaalmController  {
 
     private final MaalmService service;

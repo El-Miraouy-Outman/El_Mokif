@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/reviews")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class RevieController {
     private final ReviewService reviewService;
@@ -21,5 +20,10 @@ public class RevieController {
     @PostMapping
     public Review saveReview(@RequestBody Review review) throws Exception {
         return reviewService.saveReview(review);
+    }
+
+    @GetMapping
+    public List<Review> getAllReview() {
+        return reviewService.getAllReview();
     }
 }

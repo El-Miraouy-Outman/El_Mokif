@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/services")
-@CrossOrigin(origins = "*")
 public class ServiceController  {
     private  final ServiceService serviceService;
     @GetMapping("/{id}")

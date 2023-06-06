@@ -12,8 +12,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -25,19 +27,18 @@ public class MaalmApplication {
         SpringApplication.run(MaalmApplication.class, args);
     }
 
-
     @Configuration
-    public class CorsConfiguration implements WebMvcConfigurer {
-
+    @EnableWebMvc
+    public class WebConfig implements WebMvcConfigurer {
         @Override
         public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/**")
-                    .allowedOriginPatterns("http://localhost:53212") // Replace with your Flutter application's origin
+            registry.addMapping("/api/**")
+                    .allowedOriginPatterns("*")
                     .allowedMethods("GET", "POST", "PUT", "DELETE")
                     .allowedHeaders("*")
-                    .allowCredentials(false);
+                    .allowCredentials(true).maxAge(3600);
+            // Add more mappings...
         }
-
     }
 
 /*

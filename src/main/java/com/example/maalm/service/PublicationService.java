@@ -9,12 +9,14 @@ import java.util.List;
 public interface PublicationService {
     public List<Publication> publicationAll() ;
     public  List<PublicationDto> accepterPublication();
+    List<PublicationDto> refuserPublication();
     public Publication findById(Long IDPUB);
     public List<Publication> findByMaalm(Long idMamm) throws Exception;
 
     public boolean deleteById(Long IDPUB);
     public Publication acceptePublication(Long idPub);
     public Publication insert(Publication publication,Long IdPublicateur,String servicaName) throws Exception;
+
 
 
 }
