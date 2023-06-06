@@ -20,7 +20,14 @@ public class ServiceController  {
     public List<Service> getALLServices(){
         return  serviceService.getAllServices();
     }
-
+   @DeleteMapping("{id}")
+   public void deleteService(@PathVariable Long id) {
+        serviceService.deleteService(id);
+   }
+   @PutMapping
+   public Service update(@RequestBody Service service) {
+        return serviceService.update(service);
+   }
     @GetMapping("/name/{name}")
     public Service getServiceByName(@PathVariable String name) {
         return serviceService.getServiceByName(name);

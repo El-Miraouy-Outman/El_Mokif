@@ -18,6 +18,11 @@ public class ServiceServiceImp implements ServiceService{
     }
 
     @Override
+    public void deleteService(Long id) {
+        serviceRepository.deleteById(id);
+    }
+
+    @Override
     public Service getServiceByName(String name) {
         return serviceRepository.findByName(name);
     }
@@ -30,5 +35,12 @@ public class ServiceServiceImp implements ServiceService{
     @Override
     public List<Service> getAllServices() {
         return serviceRepository.findAll();
+    }
+
+    @Override
+    public Service update(Service service) {
+        Service service1=serviceRepository.findById(service.getId()).get();
+        service1.setName(service.getName());
+        return serviceRepository.save(service1);
     }
 }
