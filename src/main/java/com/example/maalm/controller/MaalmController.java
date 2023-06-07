@@ -31,7 +31,6 @@ public class MaalmController  {
 
     @PutMapping
     public Maalm updateMaalm(@RequestBody Maalm maalm) throws Exception {
-        System.out.println(maalm);
         return service.updateMaalm(maalm);
     }
 
