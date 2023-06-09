@@ -31,7 +31,11 @@ public class MaalmServiceImpl implements MaalmService {
     }
 
     @Override
-    public Maalm saveMaalm(Maalm maalm) {
+    public Maalm saveMaalm(Maalm maalm) throws Exception {
+
+        if( maalmRepository.findByEmail(maalm.getEmail())!=null ||
+            maalmRepository.findByCin(maalm.getCin())!=null)
+            throw  new Exception("Utilisateur  déja existe");
         return maalmRepository.save(maalm);
     }
 
@@ -39,8 +43,7 @@ public class MaalmServiceImpl implements MaalmService {
     public Maalm updateMaalm(Maalm maalm) throws Exception {
         Maalm maalm1 = getMaalmByCni(maalm.getCin());
         BeanUtils.copyProperties(maalm,maalm1);
-        if ((maalm1==null))throw new  Exception("maalm not fund");
-        // update
+        if (maalm1==null)throw new  Exception("maalm not fund");
         return maalmRepository.save(maalm);
     }
 

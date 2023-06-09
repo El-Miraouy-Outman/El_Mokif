@@ -21,6 +21,10 @@ public class RevieController {
     public Review saveReview(@RequestBody Review review) throws Exception {
         return reviewService.saveReview(review);
     }
+    @PutMapping
+    public Review updateReview(@RequestBody Review review) throws Exception {
+        return reviewService.updateReview(review);
+    }
 
     @GetMapping
     public List<Review> getAllReview() {

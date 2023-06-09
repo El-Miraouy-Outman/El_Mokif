@@ -98,6 +98,14 @@ public class PublicationServiceImpl implements PublicationService {
 
     }
 
+    @Override
+    public boolean updatePublication(Publication PUB) {
+        Publication publication=publicationRepository.findById(PUB.getId()).get();
+        publication.setDescription(PUB.getDescription());
+        publicationRepository.save(publication);
+        return true;
+    }
+
 
     @Override
     public Publication insert(Publication publication, Long idPublicateur, String servicaName) throws Exception {

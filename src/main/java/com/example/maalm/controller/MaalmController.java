@@ -25,13 +25,12 @@ public class MaalmController  {
     }
 
     @PostMapping
-    public Maalm saveMaalm(@RequestBody Maalm maalm) {
+    public Maalm saveMaalm(@RequestBody Maalm maalm) throws Exception {
         return service.saveMaalm(maalm);
     }
 
     @PutMapping
     public Maalm updateMaalm(@RequestBody Maalm maalm) throws Exception {
-        System.out.println(maalm);
         return service.updateMaalm(maalm);
     }
 

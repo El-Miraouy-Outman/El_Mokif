@@ -13,6 +13,6 @@ import java.util.Optional;
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication,Long> {
      public  List<Publication> findByMaalm(Maalm maalm);
-     //@Query("select u from Publication u where u.etat='1' ")
+
      public  List<Publication> findByEtat(Etat etat);
 }

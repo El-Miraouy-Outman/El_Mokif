@@ -9,5 +9,7 @@ public interface MaalmRepository extends JpaRepository<Maalm,Long> {
 
     public  Maalm findByEmailAndPassword(String email,String pass);
     public  Maalm findByCin(String cne);
+    public  Maalm findByEmail(String email);
+
 }
 

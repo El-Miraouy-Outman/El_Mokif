@@ -8,7 +8,7 @@ public interface MaalmService {
     public  Maalm findByEmailAndPASS(String email,String code) throws Exception;
 
     public  Maalm getMaalmByCni(String cne) throws Exception;
-    public  Maalm saveMaalm(Maalm maalm);
+    public  Maalm saveMaalm(Maalm maalm) throws Exception;
     public  Maalm updateMaalm(Maalm maalm) throws Exception;
     public  Maalm findById(Long id) throws Exception;
 
