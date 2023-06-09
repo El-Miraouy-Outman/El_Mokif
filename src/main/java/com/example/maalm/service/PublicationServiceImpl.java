@@ -105,6 +105,13 @@ public class PublicationServiceImpl implements PublicationService {
         publicationRepository.save(publication);
         return true;
     }
+    @Override
+    public boolean update(Publication PUB) {
+        Publication publication=publicationRepository.findById(PUB.getId()).get();
+        publication.setDescription(PUB.getDescription());
+        publicationRepository.save(publication);
+        return true;
+    }
 
 
     @Override

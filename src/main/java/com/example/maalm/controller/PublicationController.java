@@ -15,7 +15,10 @@ public class PublicationController {
     public List<Publication> findByMaalm(@PathVariable Long idMaalm) throws Exception {
         return publicationService.findByMaalm(idMaalm);
     }
-
+    @PutMapping
+    public boolean updatePublication(@RequestBody Publication publication) throws Exception {
+        return publicationService.update(publication);
+    }
     @GetMapping
     public List<Publication> publicationAll() {
         return publicationService.publicationAll();

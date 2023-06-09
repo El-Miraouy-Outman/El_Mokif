@@ -16,6 +16,7 @@ public interface PublicationService {
     public boolean deleteById(Long IDPUB);
     public Publication acceptePublication(Long idPub);
     public boolean updatePublication(Publication PUB);
+    public boolean update(Publication PUB);
 
     public Publication insert(Publication publication,Long IdPublicateur,String servicaName) throws Exception;
 
