@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,16 +42,16 @@ public class ReviewServiceImpl implements ReviewService{
 
     @Override
     public Review saveReview(Review review) throws Exception {
-        Maalm maalm = maalmService.findById(review.getIdReviewrs());
+        Maalm maalm = maalmService.findById(review.getMaalm().getId());
         review.setMaalm(maalm);
         return reviewRepository.save(review);
     }
 
     @Override
-    public Review updateReview(Review review) throws Exception {
-        review = reviewRepository.save(review);
+    public Review updateReview(Review reviewcome) throws Exception {
+        Review review = reviewRepository.findById(reviewcome.getId()).get();
         if (review == null) throw new Exception("review not fund");
-        review.setReview(review.getReview());
+        BeanUtils.copyProperties(reviewcome, review);
         return reviewRepository.save(review);
     }
 
@@ -58,4 +59,13 @@ public class ReviewServiceImpl implements ReviewService{
     public List<Review> getAllReview() {
         return reviewRepository.findAll();
     }
+
+    @Override
+    public Review getReviewByMaalmAndClient(Long idmaalm, Long idClient) throws Exception {
+        Maalm maalm = maalmService.findById(idmaalm);
+        List<Review> reviewList = maalm.getReviewList();
+        return reviewList.stream().filter(rev -> Objects.equals(rev.getIdClient(), idClient)).findFirst().get();
+    }
+
+
 }

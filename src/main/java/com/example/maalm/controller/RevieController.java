@@ -1,6 +1,7 @@
 package com.example.maalm.controller;
 
 import com.example.maalm.Dto.ReviewDto;
+import com.example.maalm.entities.Maalm;
 import com.example.maalm.entities.Review;
 import com.example.maalm.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,16 @@ public class RevieController {
     @GetMapping
     public List<Review> getAllReview() {
         return reviewService.getAllReview();
+    }
+
+    @PutMapping
+    public Review updateReview(@RequestBody Review review) throws Exception {
+        System.out.println(review);
+        return reviewService.updateReview(review);
+    }
+
+    @GetMapping("/maalm/{id}/client/{idClient}")
+    public Review getReviewByMaalmAndClient(@PathVariable Long id, @PathVariable Long idClient) throws Exception {
+        return reviewService.getReviewByMaalmAndClient(id,idClient);
     }
 }

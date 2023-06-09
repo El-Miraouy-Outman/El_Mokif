@@ -28,10 +28,10 @@ public class Maalm {
     private String adresse;
     private int reviewTotal;
     private boolean role;
-    @OneToMany(mappedBy = "maalm")
+    @OneToMany(mappedBy = "maalm",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Review> reviewList;
-    @OneToMany(mappedBy ="maalm")
+    @OneToMany(mappedBy ="maalm",cascade = CascadeType.ALL)
     @JsonIgnore
     //@ToString.Exclude
     private  List<Publication> publication;

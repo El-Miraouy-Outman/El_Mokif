@@ -33,10 +33,13 @@ public class PublicationController {
     @GetMapping("/accepter")
     public  List<PublicationDto> publicationAccepter(){
         return publicationService.accepterPublication();
-    }   @GetMapping("/refuser")
+    }
+
+    @GetMapping("/refuser")
     public  List<PublicationDto> publicationRefudser(){
         return publicationService.refuserPublication();
     }
+
     @DeleteMapping("/{IDPUB}")
     public boolean deleteById(@PathVariable Long IDPUB) {
         return publicationService.deleteById(IDPUB);

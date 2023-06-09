@@ -17,7 +17,6 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idReviewrs;
     private int review;
     @ManyToOne
     private Maalm maalm;
