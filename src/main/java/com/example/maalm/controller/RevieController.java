@@ -32,11 +32,6 @@ public class RevieController {
         return reviewService.getAllReview();
     }
 
-    @PutMapping
-    public Review updateReview(@RequestBody Review review) throws Exception {
-        System.out.println(review);
-        return reviewService.updateReview(review);
-    }
 
     @GetMapping("/maalm/{id}/client/{idClient}")
     public Review getReviewByMaalmAndClient(@PathVariable Long id, @PathVariable Long idClient) throws Exception {

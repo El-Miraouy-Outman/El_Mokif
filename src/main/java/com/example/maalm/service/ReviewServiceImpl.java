@@ -63,6 +63,8 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public Review getReviewByMaalmAndClient(Long idmaalm, Long idClient) throws Exception {
         Maalm maalm = maalmService.findById(idmaalm);
+        if (maalm==null)
+            return  null;
         List<Review> reviewList = maalm.getReviewList();
         return reviewList.stream().filter(rev -> Objects.equals(rev.getIdClient(), idClient)).findFirst().get();
     }
