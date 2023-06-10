@@ -109,6 +109,7 @@ public class PublicationServiceImpl implements PublicationService {
     public boolean update(Publication PUB) {
         Publication publication=publicationRepository.findById(PUB.getId()).get();
         publication.setDescription(PUB.getDescription());
+        publication.setEtat(PUB.getEtat());
         publicationRepository.save(publication);
         return true;
     }
