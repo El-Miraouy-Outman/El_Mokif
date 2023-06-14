@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -110,6 +111,7 @@ public class PublicationServiceImpl implements PublicationService {
         Publication publication=publicationRepository.findById(PUB.getId()).get();
         publication.setDescription(PUB.getDescription());
         publication.setEtat(PUB.getEtat());
+        publication.setDatecreation(PUB.getDatecreation());
         publicationRepository.save(publication);
         return true;
     }
